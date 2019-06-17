@@ -15,6 +15,7 @@ const products = require('./routes/api/products');
 const region = require('./routes/api/region');
 const therapy = require('./routes/api/therapy');
 const users = require('./routes/api/users');
+const user_role = require('./routes/api/user_role');
 
 
 const app = express();
@@ -39,7 +40,6 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 // Use Routes
-app.use('/api/users', users);
 app.use('/api/products', products);
 app.use('/api/customers', customers);
 app.use('/api/city', city);
@@ -49,6 +49,8 @@ app.use('/api/country', country);
 app.use('/api/district', district);
 app.use('/api/region', region);
 app.use('/api/therapy', therapy);
+app.use('/api/user_role', user_role);
+app.use('/api/users', users);
 
 
 const port = process.env.PORT || 5000;
