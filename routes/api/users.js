@@ -100,6 +100,7 @@ router.post(
       pin: req.body.pin,
       title: req.body.title,
       user_role: req.body.user_role,
+      last_name :req.body.last_name,
       region_name: req.body.region_name,
       manager_name: req.body.manager_name,
       is_active: req.body.is_active,

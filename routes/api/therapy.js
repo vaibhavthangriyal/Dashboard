@@ -4,8 +4,8 @@ const Therapy = require('../../models/Therapy');
 
 router.post('/addTherapy', (req, res) => {
   let newTherapy = new Therapy({
-    therapyline: req.body.natherapylineme,
-    therapyline_id: req.body.therapyline_id,
+    therapyline: req.body.therapy_line,
+    therapyline_id: req.body.therapy_line_id,
     bu_id: req.body.bu_id,
     notes: req.body.notes,
   });
@@ -16,8 +16,8 @@ router.post('/addTherapy', (req, res) => {
 
 router.put('/update/:TherapyId', (req, res) => {
   let newTherapy = new Therapy({
-    therapyline: req.body.natherapylineme,
-    therapyline_id: req.body.therapyline_id,
+    therapyline: req.body.therapy_line,
+    therapyline_id: req.body.therapy_line_id,
     bu_id: req.body.bu_id,
     notes: req.body.notes,
   });

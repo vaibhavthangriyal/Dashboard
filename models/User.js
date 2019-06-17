@@ -37,15 +37,12 @@ const UserSchema = new Schema({
   },
   region_name: {
     type: String,
-    required: true,
   },
   city_name: {
     type: String,
-    required: true,
   },
   district_name: {
     type: String,
-    required: true,
   },
   address: {
     type: String,
@@ -65,7 +62,6 @@ const UserSchema = new Schema({
   },
   manager_name: {
     type: String,
-    required: true,
   },
   date: {
     type: Date,
@@ -73,7 +69,6 @@ const UserSchema = new Schema({
   },
   is_active: {
     type: Boolean,
-    required: true
   }
 });
 
