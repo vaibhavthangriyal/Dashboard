@@ -13,11 +13,11 @@ router.post('/addCompany', (req, res) => {
 });
 
 router.put('/update/:CompanyId', (req, res) => {
-  let newCompany = new Company({
+  let newCompany = {
     company_name: req.body.company_name,
     is_active: req.body.is_active,
-  });
-  newCompany.findById(req.params.CompanyId, function (err, company) {
+  }
+  Company.findByIdAndUpdate(req.params.CompanyId, newCompany, {}, function (err, company) {
     if (!company)
       res.status(404).send("data is not found");
     else {

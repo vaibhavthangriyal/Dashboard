@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-//const path = require('path');
+const path = require('path');
 var cors = require('cors')
 
 const bu = require('./routes/api/bu');
@@ -19,10 +19,14 @@ const user_role = require('./routes/api/user_role');
 
 
 const app = express();
-app.use(cors())
+app.use(cors());
+
+app.use(express.static(path.join(__dirname, 'public')));
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+
 
 // DB Config
 const db = require('./config/keys').mongoURI;
@@ -52,6 +56,9 @@ app.use('/api/therapy', therapy);
 app.use('/api/user_role', user_role);
 app.use('/api/users', users);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+})
 
 const port = process.env.PORT || 5000;
 

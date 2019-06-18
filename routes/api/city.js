@@ -16,24 +16,24 @@ router.post('/addCity', (req, res) => {
 });
 
 router.put('/update/:CityId', (req, res) => {
-  let newCity = new City({
+  let newCity = {
     company_name: req.body.company_name,
     country_name: req.body.country_name,
     region_name: req.body.region_name,
     city_name: req.body.city_name,
     is_active: req.body.is_active,
-  });
-  newCity.findById(req.params.CityId, function (err, City) {
-    if (!City)
+  }
+  City.findByIdAndUpdate(req.params.CityId, newCity, {}, function (err, city) {
+    if (!city)
       res.status(404).send("data is not found");
     else {
-      City.company_name = req.body.company_name;
-      City.country_name = req.body.country_name;
-      City.region_name = req.body.region_name;
-      City.city_name = req.body.city_name;
-      City.is_active = req.body.is_active;
-      City.save().then(City => {
-        res.send(City);
+      city.company_name = req.body.company_name;
+      city.country_name = req.body.country_name;
+      city.region_name = req.body.region_name;
+      city.city_name = req.body.city_name;
+      city.is_active = req.body.is_active;
+      city.save().then(city => {
+        res.send(city);
       })
         .catch(err => {
           res.status(400).send("Update not possible");

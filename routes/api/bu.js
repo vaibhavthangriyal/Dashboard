@@ -17,7 +17,10 @@ router.put('/update/:BUId', (req, res) => {
     bu_name: req.body.bu_name,
     bu_id: req.body.bu_id,
   });
-  newBU.findById(req.params.BUId, function (err, bu) {
+  BU.findByIdAndUpdate(req.params.BUId, {
+    bu_name: req.body.bu_name,
+    bu_id: req.body.bu_id,
+  }, {}, (err, bu) => {
     if (!BU)
       res.status(404).send("data is not found");
     else {
@@ -30,7 +33,8 @@ router.put('/update/:BUId', (req, res) => {
           res.status(400).send("Update not possible");
         });
     }
-  });
+  })
+
 }
 );
 
